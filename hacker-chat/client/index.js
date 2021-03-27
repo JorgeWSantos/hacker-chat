@@ -1,8 +1,11 @@
+#!/usr/bin/env node
+
+/* 
+    chmod +x index.js
+*/
+
 /* cd hacker-chat/aula-02/client
-    node index.js \
-        ---username erick wendel \
-        --room sala01 \
-        --hostUri localhost
+    hacker-chat \ --username erick wendel \ --room sala01
 */
 
 import CliConfig from './src/cliConfig.js';
