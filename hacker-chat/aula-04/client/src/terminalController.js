@@ -31,17 +31,17 @@ export default class TerminalController {
 
     #onMessageReceived({ screen, chat }) {
         return msg => {
-            const { userName, message } = msg;
-            const color = this.#getUserColor(userName);
-            chat.addItem(`{${color}}{bold}${userName}{/}: ${message}`);
+            const { username, message } = msg;
+            const color = this.#getUserColor(username);
+            chat.addItem(`{${color}}{bold}${username}{/}: ${message}`);
             screen.render();
         }
     }
 
     #onLogChanged({ screen, activityLog }) {
         return msg => {
-            const [userName] = msg.split(/\s/);
-            const color = this.#getUserColor(userName);
+            const [username] = msg.split(/\s/);
+            const color = this.#getUserColor(username);
             activityLog.addItem(`{${color}}{bold}${msg.toString()}{/}`);
             screen.render();
         }
@@ -86,10 +86,10 @@ export default class TerminalController {
         components.input.focus();
         components.screen.render();
 
-        eventEmitter.emit('message:received', { 
-            message: 'hello world!!', 
-            userName: 'Jorge Willian' 
-        });
+        // eventEmitter.emit('message:received', { 
+        //     message: 'hello world!!', 
+        //     username: 'Jorge Willian' 
+        // });
 
         // eventEmitter.emit('message:received', { 
         //     message: 'Heello!!', 

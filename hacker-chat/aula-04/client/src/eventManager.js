@@ -51,6 +51,21 @@ export default class EventManager {
         this.#updateActivityLogComponent(`${user.username} joined!`);
     }
 
+    message(message) {
+        this.#emitComponentUpdate(
+            constants.events.app.MESSAGE_RECEIVED,
+            message
+        );
+    }
+
+    disconnectUser(user) {
+        const {username, id} = user;
+        this.#allUsers.delete(id);
+
+        this.#updateActivityLogComponent(`${username} left!`);
+        this.#updateUsersComponent();
+    }
+
     getEvents() {
         const functions = Reflect.ownKeys(EventManager.prototype)
             .filter(fn => fn !== 'constructor')
